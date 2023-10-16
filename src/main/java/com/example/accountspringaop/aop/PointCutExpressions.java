@@ -40,4 +40,8 @@ public class PointCutExpressions {
     public void forMethodsStartingWithSayInAccountDao() {
     }
 
+    @Pointcut("execution(* com.example.accountspringaop.AccountDao.getAccounts(..))")
+    public void forGetAccountMethodInAccountDao() {
+    }
+
 }
