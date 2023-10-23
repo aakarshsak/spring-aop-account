@@ -98,4 +98,8 @@ public class PointCutExpressions {
     @Pointcut("execution(* tellFor*(*))")
     public void forTellFortuneMethods() {
     }
+
+    @Pointcut("execution(* com.example.accountspringaop.*.FortuneServiceImpl.print*())")
+    public void forPrintFortuneMethods() {
+    }
 }

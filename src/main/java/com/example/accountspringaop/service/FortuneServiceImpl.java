@@ -23,4 +23,13 @@ public class FortuneServiceImpl implements FortuneService{
 
         return "Holy Shit!!! I am seeing a rich man in like 2 months....";
     }
+
+    @Override
+    public void printYearsFortuneWithDelay() {
+        int j=0;
+        for(int i=0;i<100000;i++) {
+            j++;
+        }
+        System.out.println("My lord!!! You looks like a thor at the end of the year...");
+    }
 }

@@ -3,10 +3,8 @@ package com.example.accountspringaop.aop;
 
 import com.example.accountspringaop.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -39,6 +37,23 @@ public class MyCloudLoggingAspect {
 
         System.out.println("Method Signature: " + methodSignature);
         System.out.println("Exception: " + throwable);
+    }
+
+
+    // Even with void it will give the same response for intercepting void methods so its better to use Object for all methods
+    @Around("com.example.accountspringaop.aop.PointCutExpressions.forPrintFortuneMethods()")
+    public Object addingAroundAdviceWithVoid(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("\n------- >> @Around STARTED advice for Cloud Logging Aspect to check for void method...");
+
+        long startTime = System.currentTimeMillis();
+
+        Object result = proceedingJoinPoint.proceed();
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time Taken for execution: " + (endTime - startTime)/1000.0);
+        System.out.println("\n------- >> @Around ENDED advice for logging Aspect to handle exception for method...");
+
+        return result;
     }
 
 }

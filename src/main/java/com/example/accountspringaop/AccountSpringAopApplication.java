@@ -51,7 +51,12 @@ public class AccountSpringAopApplication {
 			System.out.println(exception);
 		}
 
+
 		System.out.println("My Fortune: " + fortune);
+
+		System.out.print("Printing Years Fortune: ");
+		fortuneService.printYearsFortuneWithDelay();
+
 	}
 
 	private void doSomeStuffToDemonstrateAfterAdvice(AccountDao accountDao) {
